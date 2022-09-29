@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, Button } from "./../ui";
+import { TextInput, Button } from "../ui";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { schoolService } from "../services";

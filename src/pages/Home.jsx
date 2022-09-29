@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "./../ui";
+import { Button } from "../ui";
 import { BsArrowRightShort } from "react-icons/bs";
 import landing from "../media/landing.jpg";
 import key1 from "../media/keyFeature-1.svg";

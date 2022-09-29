@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, RadioInput, Button } from "./../ui";
+import { TextInput, RadioInput, Button } from "../ui";
 import FilePondUploader from "../components/FilePondUploader";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";

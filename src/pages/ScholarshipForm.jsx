@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, RadioInput, SelectInput, Button } from "./../ui";
+import { TextInput, RadioInput, SelectInput, Button } from "../ui";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { regex } from "../utility";

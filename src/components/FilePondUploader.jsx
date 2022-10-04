@@ -26,7 +26,7 @@ function FilePondUploader({ label, setFiles, setFieldValue, name }) {
           process: {
             onload: (response) => {
               const res = JSON.parse(response);
-              console.log(res);
+
               if (setFiles)
                 setFiles((e) => [...e, { url: res.data.url, id: res.data.id }]);
               setFieldValue(name, res.data.url);

@@ -19,8 +19,8 @@ const careerFormValidation = Yup.object({
     .matches(regex.panRegex, "Pan number is not valid")
     .required(),
   examCenter: Yup.string().required(),
-  address1: Yup.string().required(),
-  address2: Yup.string().required(),
+  addressLine1: Yup.string().required(),
+  addressLine2: Yup.string().required(),
   gender: Yup.string().required(),
   dob: Yup.string().required(),
   category: Yup.string().required(),
@@ -41,8 +41,8 @@ const initialFormValue = {
   aadharNumber: "",
   panNumber: "",
   examCenter: "",
-  address1: "",
-  address2: "",
+  addressLine1: "",
+  addressLine2: "",
   gender: "",
   dob: "",
   category: "",
@@ -70,6 +70,7 @@ function Career() {
         amount: res.data.amount,
         notes: {
           model: "JOB_APPLICANT",
+          charge: res.data.amount,
           documentId: res.data.documentId,
         },
       });
@@ -199,13 +200,13 @@ function Career() {
                 label="Qualification"
               />
               <TextInput
-                name="address1"
+                name="addressLine1"
                 placeholder="Address Line 1"
                 inputClassName="w-full"
                 label="Address Line 1"
               />
               <TextInput
-                name="address2"
+                name="addressLine2"
                 placeholder="Address Line 2"
                 inputClassName="w-full"
                 label="Address Line 2"

@@ -8,8 +8,8 @@ import { regex } from "../utility";
 
 const schoolRegistrationFormValidation = Yup.object({
   schoolName: Yup.string().required(),
-  address1: Yup.string().required(),
-  address2: Yup.string().required(),
+  addressLine1: Yup.string().required(),
+  addressLine2: Yup.string().required(),
   phone: Yup.string()
     .matches(regex.phoneRegex, "Phone number is not valid")
     .required(),
@@ -18,8 +18,8 @@ const schoolRegistrationFormValidation = Yup.object({
 
 const initialFormValue = {
   schoolName: "",
-  address1: "",
-  address2: "",
+  addressLine1: "",
+  addressLine2: "",
   phone: "",
   email: "",
 };
@@ -65,13 +65,13 @@ function SchoolRegistration() {
             />
 
             <TextInput
-              name="address1"
+              name="addressLine1"
               placeholder="Address Line 1"
               inputClassName="w-full"
               label="Address Line 1"
             />
             <TextInput
-              name="address2"
+              name="addressLine2"
               placeholder="Address Line 2"
               inputClassName="w-full"
               label="Address Line 2"

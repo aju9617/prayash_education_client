@@ -38,7 +38,7 @@ export async function displayRazorpay({
     currency: currency,
     amount: amount.toString(),
     order_id: id,
-    name: "Admission Charge",
+    name: "PrayashEducation.com",
     description: "Thank you",
     image: `${constant.CLIENT_URL}/logo.png`,
     handler: async function () {

@@ -1,10 +1,10 @@
 import React from "react";
-import { TextInput, RadioInput, Button } from "../ui";
+import { TextInput, SelectInput, RadioInput, Button } from "../ui";
 import FilePondUploader from "../components/FilePondUploader";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { regex } from "../utility";
-import { admissionService } from "../services";
+import { studentPremiumLeagueService } from "../services";
 import { displayRazorpay } from "../scripts/razorpay";
 
 const studentPremiumLeaugeValidation = Yup.object({
@@ -12,11 +12,11 @@ const studentPremiumLeaugeValidation = Yup.object({
   studentId: Yup.string().required(),
   studentName: Yup.string().required(),
   fatherName: Yup.string().required(),
-  place: Yup.string().required(),
   school: Yup.string().required(),
-  address1: Yup.string().required(),
-  address2: Yup.string().required(),
+  addressLine1: Yup.string().required(),
+  addressLine2: Yup.string().required(),
   gender: Yup.string().required(),
+  category: Yup.string().required(),
   dob: Yup.string().required(),
   phone: Yup.string()
     .matches(regex.phoneRegex, "Phone number is not valid")
@@ -26,24 +26,24 @@ const studentPremiumLeaugeValidation = Yup.object({
 });
 
 const initialFormValue = {
-  studentName: "",
-  fatherName: "",
-  school: "",
-  address1: "",
-  address2: "",
-  gender: "",
-  dob: "",
-  email: "",
-  class: "",
-  phone: "",
-  place: "",
-  studentId: "",
-  picture: "",
+  studentName: "sd",
+  fatherName: "ds",
+  school: "dsd",
+  category: "obc",
+  addressLine1: "dsds",
+  addressLine2: "ds",
+  gender: "male",
+  dob: "1999-12-21",
+  email: "aju@gmail.com",
+  class: "3",
+  phone: "7685588707",
+  studentId: "ewe",
+  picture: "wew",
 };
 
 function StudentPremiumLeague() {
   const handleStudentLeague = async (e, { resetForm }) => {
-    const res = await admissionService.submitAdmissionForm(e);
+    const res = await studentPremiumLeagueService.submitForm(e);
 
     displayRazorpay({
       name: res.data.studentName,
@@ -54,11 +54,12 @@ function StudentPremiumLeague() {
       currency: res.data.currency,
       amount: res.data.amount,
       notes: {
-        model: "ADMISSION",
+        model: "STUDENT_PREMIER_LEAGUE",
+        charge: res.data.amount,
         documentId: res.data.documentId,
       },
     });
-    resetForm();
+    // resetForm();
   };
 
   return (
@@ -69,7 +70,7 @@ function StudentPremiumLeague() {
         validationSchema={studentPremiumLeaugeValidation}
         onSubmit={handleStudentLeague}
       >
-        {({ setFieldValue, isSubmitting }) => {
+        {({ setFieldValue, isSubmitting, errors }) => {
           return (
             <Form>
               <TextInput
@@ -91,7 +92,17 @@ function StudentPremiumLeague() {
                 inputClassName="w-full"
                 label="Date of Birth"
               />
-
+              <SelectInput
+                label="Category"
+                name="category"
+                placeholder="Category"
+                options={[
+                  { key: "General", value: "general" },
+                  { key: "OBC", value: "obc" },
+                  { key: "ST", value: "st" },
+                  { key: "SC", value: "sc" },
+                ]}
+              />
               <div className="mb-4">
                 <label htmlFor="gender" className="block mb-2">
                   Gender
@@ -146,13 +157,13 @@ function StudentPremiumLeague() {
                 label="School Name"
               />
               <TextInput
-                name="address1"
+                name="addressLine1"
                 placeholder="Address Line 1"
                 inputClassName="w-full"
                 label="Address Line 1"
               />
               <TextInput
-                name="address2"
+                name="addressLine2"
                 placeholder="Address Line 2"
                 inputClassName="w-full"
                 label="Address Line 2"

@@ -1,30 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
+import moment from "moment";
 import { Link } from "react-router-dom";
 import { Button } from "../ui";
 import { BsArrowRightShort } from "react-icons/bs";
+import { notificationService } from "../services";
 import landing from "../media/landing.jpg";
 import key1 from "../media/keyFeature-1.svg";
 import key2 from "../media/keyFeature-2.svg";
 import key3 from "../media/keyFeature-3.svg";
 
 function LatestInformation() {
+  const [list, setList] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalpage, setTotalPage] = useState(0);
+  const [fetching, setFetching] = React.useState(false);
+
+  React.useEffect(() => {
+    const fetch = async () => {
+      setFetching((e) => !e);
+      const res = await notificationService.getList({
+        page,
+      });
+      setFetching((e) => !e);
+      if (res.status) {
+        setList((e) => {
+          let newList = [...e, ...res.data.results];
+          newList = newList.filter(
+            (value, index, self) =>
+              index === self.findIndex((t) => t.id === value.id)
+          );
+          return newList;
+        });
+        setTotalPage(res.data.totalPages);
+      }
+    };
+
+    fetch();
+  }, [page]);
   return (
     <div className="md:w-11/12 xl:w-9/12 p-4 md:p-8   mx-auto">
-      <h4 className="text-3xl font-medium text-secondary mb-4">Latest News</h4>
-      <ul className="list-disc pl-4 ">
-        <li className=" cursor-pointer p-2 border-slate-500">
-          Lorem ilisum dolor sit amet consectetur adipisicing elit. Delectus
-          inventore i
-        </li>
-        <li className=" cursor-pointer p-2 border-slate-500">
-          Lorem ilisum dolor sit amet consectetur adipisicing elit. Delectus
-          inventore i
-        </li>
-        <li className=" cursor-pointer p-2 border-slate-500">
-          Lorem ilisum dolor sit amet consectetur adipisicing elit. Delectus
-          inventore i
-        </li>
+      <h4 className="text-3xl font-medium text-secondary mb-4">
+        Latest Updates
+      </h4>
+      <ul className="list-disc ">
+        {list.map((current) => (
+          <Link key={current.id} to={current.redirectUrl}>
+            <li className="flex items-center border-b border-gray-300 py-2">
+              {current.message}
+              {moment(current.validDate).isAfter(moment()) ? (
+                <p className="mx-2 w-max text-sm blink">New</p>
+              ) : (
+                ""
+              )}
+            </li>
+          </Link>
+        ))}
       </ul>
+      {page < totalpage && (
+        <p
+          onClick={() => setPage((e) => e + 1)}
+          className="text-sm mt-4 text-primary text-right cursor-pointer"
+        >
+          Load more
+        </p>
+      )}
     </div>
   );
 }

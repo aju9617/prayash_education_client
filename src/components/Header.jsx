@@ -34,7 +34,6 @@ function Header() {
           </NavLink>
           <NavLink
             activeClassName="text-secondary"
-            exact
             to="/result"
             className="p-4 hover:text-secondary transition-all"
           >

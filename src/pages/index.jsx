@@ -11,6 +11,7 @@ import JobApplication from "./JobApplication";
 import StudentPremiumLeague from "./StudentPremiumLeague";
 import About from "./About";
 import Contact from "./Contact";
+import Result from "./Result";
 
 function Pages() {
   const location = useLocation();
@@ -36,6 +37,7 @@ function Pages() {
         <Route exact path="/job-application" component={JobApplication} />
         <Route exact path="/about" component={About} />
         <Route exact path="/contact" component={Contact} />
+        <Route path="/result" component={Result} />
         <Redirect from="/" to="/" />
       </Switch>
       <Footer />

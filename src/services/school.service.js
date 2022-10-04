@@ -5,8 +5,14 @@ const submitSchoolRegistrationForm = catchAsync(async (body) => {
   return data;
 });
 
+export const getList = catchAsync(async () => {
+  const { data } = await api.get("/school");
+  return data;
+});
+
 const apis = {
   submitSchoolRegistrationForm,
+  getList,
 };
 
 export default apis;

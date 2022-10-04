@@ -59,7 +59,7 @@ function StudentPremiumLeague() {
         documentId: res.data.documentId,
       },
     });
-    // resetForm();
+    resetForm();
   };
 
   return (

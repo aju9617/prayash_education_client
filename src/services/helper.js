@@ -44,6 +44,14 @@ export const catchAsync =
     });
   };
 
+export const generateQueryString = (obj) => {
+  return Object.keys(obj)
+    .map((key) => {
+      return encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]);
+    })
+    .join("&");
+};
+
 export {
   api,
   getAuthHeader,

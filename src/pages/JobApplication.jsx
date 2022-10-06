@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { TextInput, RadioInput, SelectInput, Button } from "../ui";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { regex } from "../utility";
 import { displayRazorpay } from "../scripts/razorpay";
-import { jobApplicantService } from "../services";
+import { jobApplicantService, examCenterService } from "../services";
 import FilePondUploader from "../components/FilePondUploader";
 import toast from "react-hot-toast";
 
@@ -55,6 +55,8 @@ const initialFormValue = {
 };
 
 function Career() {
+  const [centerList, setCenterList] = useState([]);
+
   const handleCareerForm = async (e, { resetForm }) => {
     const res = await jobApplicantService.submitApplicantForm(e);
     if (res.status) {
@@ -76,6 +78,22 @@ function Career() {
       });
     }
   };
+
+  React.useEffect(() => {
+    const fetch = async () => {
+      const res = await examCenterService.list();
+      if (res.status) {
+        setCenterList(
+          res.data.map((center) => ({
+            key: center.name,
+            value: `${center.addressLine1}, ${center.addressLine2}`,
+          }))
+        );
+      }
+    };
+
+    fetch();
+  }, []);
 
   return (
     <div className="py-6 w-11/12 lg:w-8/12 xl:w-6/12 mx-auto">
@@ -184,7 +202,7 @@ function Career() {
                 label="Exam Center"
                 name="examCenter"
                 placeholder="Exam Center"
-                options={[{ key: "Center 1", value: "center1" }]}
+                options={centerList}
               />
 
               <TextInput

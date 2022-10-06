@@ -4,7 +4,7 @@ import FilePondUploader from "../components/FilePondUploader";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { regex } from "../utility";
-import { admissionService } from "../services";
+import { admissionService, examCenterService } from "../services";
 import { displayRazorpay } from "../scripts/razorpay";
 
 const admissionFormValidation = Yup.object({
@@ -48,6 +48,7 @@ const initialFormValue = {
 };
 
 function AdmissionForm() {
+  const [centerList, setCenterList] = React.useState([]);
   const [passportPhotos, setPassportPhotos] = React.useState([]);
 
   const handleAdmissionForm = async (e, { resetForm }) => {
@@ -70,6 +71,22 @@ function AdmissionForm() {
     });
     resetForm();
   };
+
+  React.useEffect(() => {
+    const fetch = async () => {
+      const res = await examCenterService.list();
+      if (res.status) {
+        setCenterList(
+          res.data.map((center) => ({
+            key: center.name,
+            value: `${center.addressLine1}, ${center.addressLine2}`,
+          }))
+        );
+      }
+    };
+
+    fetch();
+  }, []);
 
   return (
     <div className="py-6 w-11/12 lg:w-8/12 xl:w-6/12 mx-auto">
@@ -170,7 +187,7 @@ function AdmissionForm() {
                 label="Exam Center"
                 name="examCenter"
                 placeholder="Exam Center"
-                options={[{ key: "Center 1", value: "center1" }]}
+                options={centerList}
               />
               <TextInput
                 name="class"

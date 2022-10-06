@@ -117,6 +117,7 @@ function ResultList({ academicYear }) {
     toast.promise(promise, {
       loading: "Fetching result...",
       success: (res) => {
+        console.log(res);
         let msg = "";
         if (res.data) {
           setData(res.data);

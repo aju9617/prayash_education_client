@@ -4,7 +4,7 @@ import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { regex } from "../utility";
 import FilePondUploader from "../components/FilePondUploader";
-import { scholarshipService } from "../services";
+import { scholarshipService, examCenterService } from "../services";
 import { displayRazorpay } from "../scripts/razorpay";
 import toast from "react-hot-toast";
 
@@ -68,6 +68,7 @@ const initialFormValue = {
 };
 
 function ScholarshipForm() {
+  const [centerList, setCenterList] = React.useState([]);
   const handleScholarshipForm = async (e, { resetForm }) => {
     const res = await scholarshipService.submitScholarshipForm(e);
 
@@ -91,6 +92,21 @@ function ScholarshipForm() {
     }
   };
 
+  React.useEffect(() => {
+    const fetch = async () => {
+      const res = await examCenterService.list();
+      if (res.status) {
+        setCenterList(
+          res.data.map((center) => ({
+            key: center.name,
+            value: `${center.addressLine1}, ${center.addressLine2}`,
+          }))
+        );
+      }
+    };
+
+    fetch();
+  }, []);
   return (
     <div className="py-6 w-11/12 lg:w-8/12 xl:w-6/12 mx-auto">
       <h4 className="text-2xl mb-4">Scholarship Form</h4>
@@ -189,7 +205,7 @@ function ScholarshipForm() {
                 label="Exam Center"
                 name="examCenter"
                 placeholder="Exam Center"
-                options={[{ key: "Center 1", value: "center1" }]}
+                options={centerList}
               />
               <TextInput
                 name="class"

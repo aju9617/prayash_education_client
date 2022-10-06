@@ -7,6 +7,7 @@ import notificationService from "./notification.service";
 import meritListService from "./meritList.service";
 import resultService from "./result.service";
 import admitCardService from "./admitCard.service";
+import examCenterService from "./examCenter.service";
 
 export {
   admissionService,
@@ -18,4 +19,5 @@ export {
   meritListService,
   resultService,
   admitCardService,
+  examCenterService,
 };

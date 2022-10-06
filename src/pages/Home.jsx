@@ -44,7 +44,12 @@ function LatestInformation() {
       </h4>
       <ul className="list-disc ">
         {list.map((current) => (
-          <Link key={current.id} to={current.redirectUrl}>
+          <a
+            key={current.id}
+            href={current.redirectUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <li className="flex items-center border-b border-gray-300 py-2">
               {current.message}
               {moment(current.validDate).isAfter(moment()) ? (
@@ -53,7 +58,7 @@ function LatestInformation() {
                 ""
               )}
             </li>
-          </Link>
+          </a>
         ))}
       </ul>
       {page < totalpage && (

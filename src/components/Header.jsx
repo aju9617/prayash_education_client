@@ -53,7 +53,13 @@ function Header() {
           >
             Scholarship
           </NavLink>
-
+          <NavLink
+            activeClassName="text-secondary"
+            to="/school-registration"
+            className="p-2 hover:text-secondary transition-all block"
+          >
+            School Registration
+          </NavLink>
           <NavLink
             activeClassName="text-secondary"
             to="/job-application"
@@ -118,6 +124,13 @@ function Header() {
           className="p-2 hover:text-secondary transition-all block"
         >
           Apply for job
+        </NavLink>
+        <NavLink
+          activeClassName="text-secondary"
+          to="/school-registration"
+          className="p-2 hover:text-secondary transition-all block"
+        >
+          School Registration
         </NavLink>
         <NavLink
           activeClassName="text-secondary"

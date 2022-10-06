@@ -5,6 +5,8 @@ import scholarshipService from "./scholarship.service";
 import studentPremiumLeagueService from "./studentPremierLeague.service";
 import notificationService from "./notification.service";
 import meritListService from "./meritList.service";
+import resultService from "./result.service";
+import admitCardService from "./admitCard.service";
 
 export {
   admissionService,
@@ -14,4 +16,6 @@ export {
   studentPremiumLeagueService,
   notificationService,
   meritListService,
+  resultService,
+  admitCardService,
 };

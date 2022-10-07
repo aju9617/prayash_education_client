@@ -1,40 +1,75 @@
-import React from "react";
-import p1 from "../media/img/p-1.jpeg";
-import p2 from "../media/img/p-2.jpeg";
-import p3 from "../media/img/p-3.jpeg";
-import p4 from "../media/img/p-4.jpeg";
-import p5 from "../media/img/p-5.jpeg";
-import p6 from "../media/img/p-6.jpeg";
-import p7 from "../media/img/p-7.jpeg";
-import p8 from "../media/img/p-8.jpeg";
-import p9 from "../media/img/p-9.jpeg";
-import p10 from "../media/img/p-10.jpeg";
-function Gallery() {
-  return (
-    <div className="md:w-11/12 xl:w-9/12 p-4 md:p-8   mx-auto">
-      <h4 className="text-3xl font-medium text-secondary mb-4">Gallery</h4>
-      <div className="p-10 grid place-content-center">No picture</div>
-      {/* <div className="grid grid-cols-3 gap-2">
-        <div className="flex flex-col gap-2 ">
-          <img className="w-full rounded-md" src={p1} />
-          <img className="w-full rounded-md" src={p2} />
-          <img className="w-full rounded-md" src={p3} />
-        </div>
-        <div className="flex flex-col gap-2">
-          <img className="w-full rounded-md" src={p4} />
-          <img className="w-full rounded-md" src={p5} />
-          <img className="w-full rounded-md" src={p6} />
-        </div>
+import React, { useState } from "react";
+import { galleryService } from "../services";
+import moment from "moment";
+function GalleryList() {
+  const [list, setList] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalpage, setTotalPage] = useState(0);
+  const [fetching, setFetching] = React.useState(false);
 
-        <div className="flex flex-col gap-2">
-          <img className="w-full rounded-md" src={p7} />
-          <img className="w-full rounded-md" src={p8} />
-          <img className="w-full rounded-md" src={p9} />
-          <img className="w-full rounded-md" src={p10} />
+  React.useEffect(() => {
+    const fetch = async () => {
+      setFetching((e) => !e);
+      const res = await galleryService.getList({
+        page,
+      });
+      setFetching((e) => !e);
+      if (res.status) {
+        setList((e) => {
+          let newList = [...e, ...res.data.results];
+          newList = newList.filter(
+            (value, index, self) =>
+              index === self.findIndex((t) => t.id === value.id)
+          );
+          return newList;
+        });
+        setTotalPage(res.data.totalPages);
+      }
+    };
+
+    fetch();
+  }, [page]);
+
+  return (
+    <div className="py-6 w-11/12 lg:w-8/12 mx-auto">
+      <h4 className="text-3xl font-medium text-secondary mb-4">Gallery</h4>
+      <div className="my-5 grid md:grid-cols-3 gap-4">
+        {list.map((curr) => (
+          <div
+            key={curr.id}
+            className="group cursor-pointer relative h-[345px] rounded-md overflow-hidden"
+          >
+            <img
+              className="w-full h-full object-cover rounded"
+              src={curr.url}
+            />
+
+            <div className="pointer-events-none  cursor-pointer absolute top-0 left-0 right-0 bottom-0 text-white bg-gradient-to-t from-gray-800 to-transparent flex justify-end p-4 flex-col invisible group-hover:visible   ">
+              <p className="font-medium ">{curr.about}</p>
+              <p className="text-sm">{moment(curr.createdAt).fromNow()}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      {fetching && (
+        <div className="grid place-content-center min-h-[40vh]">
+          <div className="">
+            <div className="circle loader"></div>
+          </div>
+          <p className="text-center">Loading...</p>
         </div>
-      </div> */}
+      )}
+
+      {page < totalpage && (
+        <p
+          onClick={() => setPage((e) => e + 1)}
+          className="ml-auto block text-secondary text-right cursor-pointer"
+        >
+          Load more
+        </p>
+      )}
     </div>
   );
 }
 
-export default Gallery;
+export default GalleryList;

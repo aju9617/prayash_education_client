@@ -5,6 +5,7 @@ import { Button } from "../ui";
 import { BsArrowRightShort } from "react-icons/bs";
 import { notificationService } from "../services";
 import landing from "../media/landing.jpg";
+import students from "../media/students.jpg";
 import key1 from "../media/keyFeature-1.svg";
 import key2 from "../media/keyFeature-2.svg";
 import key3 from "../media/keyFeature-3.svg";
@@ -73,23 +74,39 @@ function LatestInformation() {
   );
 }
 
-function Gallery() {
+function AboutUs() {
+  const [readMode, setReadMode] = useState(false);
+  const message = `Prayash Education is the fastest growing non profit organization in
+          the field of education based in India. Our aim is to provide free and
+          higher education to every section of India. The inequality in
+          education between India and developed countries has to be removed. A
+          mission of Prayash Education is to inculcate the ability of the
+          students to learn in an easy-to-understand manner and to lead
+          proactive and efficient leadership. We help in providing higher
+          education and employment to the students through Prayash Education.
+          Colleges and schools of India are incorporated by Prayash Education.
+          Prayash Education works closely with students and institutions. Due to
+          which higher education is given to the students. Our organization
+          provides financial assistance in the form of loans to the people of
+          the lower classes.`;
   return (
     <div className="md:w-11/12 xl:w-9/12 p-4 md:p-8 grid grid-cols-1 gap-4 md:grid-cols-2  mx-auto">
       <div>
-        <h4 className="text-3xl font-medium text-secondary mb-4">
-          Recent Activity
-        </h4>
+        <h4 className="text-3xl font-medium text-secondary mb-4">About us</h4>
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
-          sed fuga doloremque voluptatem? Quisquam laudantium commodi voluptatum
-          magnam iusto animi, dolorum laboriosam repellendus rerum! Harum
-          reiciendis ab non repellendus suscipit!
+          {readMode ? message : `${message.slice(0, 350)}...`}
+          <span
+            className="text-secondary cursor-pointer "
+            onClick={() => setReadMode((e) => !e)}
+          >
+            {" "}
+            {readMode ? "read less" : " read more"}
+          </span>
         </p>
       </div>
       <div>
         <img
-          src={landing}
+          src={students}
           alt="cursol"
           className="rounded-md h-56 w-full object-cover"
         />
@@ -151,9 +168,10 @@ function Home() {
               It’s never late to learn new skills
             </h2>
             <p className="md:w-96 mt-2 mb-4">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever
+              The great thing about learning is that you never have to stop!
+              There’s no limit as to the amount of knowledge you can obtain. So,
+              rip a page from Gandhi’s book and keep on learning while you’re
+              living.
             </p>
             <Link to="/admission-form">
               <Button className="flex items-center space-x-2 mt-4">
@@ -166,7 +184,7 @@ function Home() {
         </div>
       </div>
       <Feature />
-      <Gallery />
+      <AboutUs />
       <LatestInformation />
     </>
   );

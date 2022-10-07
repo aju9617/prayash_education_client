@@ -12,7 +12,7 @@ function TableData({ student }) {
         <td className=" p-2 px-4">{student.fatherName}</td>
         <td className=" p-2 px-4">{student.email}</td>
         <td className=" p-2 px-4">{student.phone}</td>
-        <td className=" p-2 px-4">{student.applicationNumber}</td>
+        <td className=" p-2 px-4">{student.rollNumber}</td>
         <td className=" p-2 px-4">{student.academicYear}</td>
       </tr>
     </>
@@ -76,9 +76,7 @@ function MeritList({ academicYear }) {
                     <td className="p-2 px-4 whitespace-nowrap">Father Name</td>
                     <td className="p-2 px-4 whitespace-nowrap">Email</td>
                     <td className="p-2 px-4 whitespace-nowrap">Phone</td>
-                    <td className="p-2 px-4 whitespace-nowrap">
-                      Application Number
-                    </td>
+                    <td className="p-2 px-4 whitespace-nowrap">Roll Number</td>
                     <td className="p-2 px-4 whitespace-nowrap">
                       Academic Year
                     </td>

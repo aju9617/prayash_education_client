@@ -34,7 +34,7 @@ function Contact() {
             <span>
               <FiMap size={24} />
             </span>
-            <span className="ml-4">Joura, Murena, Madhya Pradesh</span>
+            <span className="ml-4">Joura, Morena, Madhya Pradesh</span>
           </div>
         </div>
 

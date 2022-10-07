@@ -26,19 +26,19 @@ const studentPremiumLeaugeValidation = Yup.object({
 });
 
 const initialFormValue = {
-  studentName: "sd",
-  fatherName: "ds",
-  school: "dsd",
-  category: "obc",
-  addressLine1: "dsds",
-  addressLine2: "ds",
-  gender: "male",
-  dob: "1999-12-21",
-  email: "aju@gmail.com",
-  class: "3",
-  phone: "7685588707",
-  studentId: "ewe",
-  picture: "wew",
+  studentName: "",
+  fatherName: "",
+  school: "",
+  category: "",
+  addressLine1: "",
+  addressLine2: "",
+  gender: "",
+  dob: "",
+  email: "",
+  class: "",
+  phone: "",
+  studentId: "",
+  picture: "",
 };
 
 function StudentPremiumLeague() {

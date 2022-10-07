@@ -1,8 +1,11 @@
 import React from "react";
 import { GiBookCover } from "react-icons/gi";
-import { IoCall, IoLocationSharp, IoLogoWhatsapp } from "react-icons/io5";
+import { IoCall, IoLocationSharp } from "react-icons/io5";
+import { AiFillInstagram } from "react-icons/ai";
 import { IoMdMail } from "react-icons/io";
-import { BsFacebook, BsLinkedin } from "react-icons/bs";
+import { IoLogoWhatsapp } from "react-icons/io5";
+import { BsFacebook, BsYoutube } from "react-icons/bs";
+import { FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 function Footer() {
   return (
@@ -13,13 +16,38 @@ function Footer() {
           <p className="font-medium text-xl">Prayash Education</p>
         </div>
         <p className="text-sm mt-2 w-9/12">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
-          repellendus nihil,
+          Prayash Education is the fastest growing non profit organization in
+          the field of education based in India.
         </p>
         <div className="flex space-x-4 mt-4 items-center">
-          <BsFacebook size={20} />
-          <BsLinkedin size={20} />
-          <IoLogoWhatsapp size={20} />
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.instagram.com/prayasheducation/"
+          >
+            <AiFillInstagram size={24} />
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://twitter.com/Prayashedu22?t=_0i7nopvviVR6WIfqADbZg&s=08"
+          >
+            <FaTwitter size={24} />
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://wa.me/919584606245"
+          >
+            <IoLogoWhatsapp size={20} />
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://youtube.com/channel/UChx6xmEpthBwGnZL4xy130Q"
+          >
+            <BsYoutube size={20} />
+          </a>
         </div>
       </div>
       <div>
@@ -60,7 +88,7 @@ function Footer() {
           </p>
           <p className="flex space-x-4 mb-1 items-center">
             <IoLocationSharp size={18} />
-            <span>Joura, Murena, Madhya Pradesh</span>
+            <span>Joura, Morena, Madhya Pradesh</span>
           </p>
         </div>
       </div>

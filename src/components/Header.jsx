@@ -34,6 +34,13 @@ function Header() {
           </NavLink>
           <NavLink
             activeClassName="text-secondary"
+            to="/gallery"
+            className="p-4 hover:text-secondary transition-all"
+          >
+            Gallery
+          </NavLink>
+          <NavLink
+            activeClassName="text-secondary"
             to="/result"
             className="p-4 hover:text-secondary transition-all"
           >
@@ -88,6 +95,13 @@ function Header() {
           className="p-2 hover:text-secondary transition-all block"
         >
           Home
+        </NavLink>
+        <NavLink
+          activeClassName="text-secondary"
+          to="/gallery"
+          className="p-4 hover:text-secondary transition-all"
+        >
+          Gallery
         </NavLink>
         <NavLink
           activeClassName="text-secondary"

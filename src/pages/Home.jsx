@@ -156,7 +156,7 @@ function Feature() {
 function Home() {
   return (
     <>
-      <div className="p-4 md:p-8 pb-4 w-full  relative">
+      {/* <div className="p-4 md:p-8 pb-4 w-full  relative">
         <div className="flex justify-between items-center w-11/12 mx-auto text-white">
           <img
             src={landing}
@@ -180,9 +180,8 @@ function Home() {
               </Button>
             </Link>
           </div>
-          {/* <img src={student_group} alt="student group" className="ml-auto" /> */}
         </div>
-      </div>
+      </div> */}
       <Feature />
       <AboutUs />
       <LatestInformation />

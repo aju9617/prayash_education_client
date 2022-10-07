@@ -23,6 +23,13 @@ function Footer() {
           <a
             target="_blank"
             rel="noopener noreferrer"
+            href="https://www.facebook.com/101172116082993/posts/115400007993537/?flite=scwspnss"
+          >
+            <BsFacebook size={22} />
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
             href="https://www.instagram.com/prayasheducation/"
           >
             <AiFillInstagram size={24} />

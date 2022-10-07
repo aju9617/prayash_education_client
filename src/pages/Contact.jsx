@@ -22,19 +22,30 @@ function Contact() {
             <span>
               <FiPhoneCall size={24} />
             </span>
-            <span className="ml-4 ">+91-958-460-6245 </span>
+            <a href="tel:958-460-6245">
+              <span className="ml-4 ">+91-958-460-6245 </span>
+            </a>
           </div>
           <div className="mb-4 flex justify-start items-center">
             <span>
               <FiMail size={24} />
             </span>
-            <span className="ml-4 "> prayasheducation86@gmail.com</span>
+
+            <a href="mailto:prayasheducation86@gmail.com">
+              <span className="ml-4 "> prayasheducation86@gmail.com</span>
+            </a>
           </div>
           <div className="mb-4 flex justify-start items-start md:items-center">
             <span>
               <FiMap size={24} />
             </span>
-            <span className="ml-4">Joura, Morena, Madhya Pradesh</span>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://g.co/kgs/V32mn7"
+            >
+              <span className="ml-4">Joura, Morena, Madhya Pradesh</span>
+            </a>
           </div>
         </div>
 

@@ -248,6 +248,7 @@ function AdmitCard({ academicYear }) {
             onChange={(e) => setModule(e.target.value)}
             className={`p-2 px-4 w-56 rounded ring-1 !ring-primary border-0 focus:ring-2 text-sm outline-none focus:outline-none `}
           >
+            <option value="JOB_APPLICANT">Job Application</option>
             <option value="ADMISSION_APPLICANT">Admission</option>
             <option value="SCHOLARSHIP_APPLICANT">Scholarship</option>
           </select>

@@ -37,10 +37,10 @@ function GalleryList() {
         {list.map((curr) => (
           <div
             key={curr.id}
-            className="group cursor-pointer relative h-[345px] rounded-md overflow-hidden"
+            className="group cursor-pointer aspect-square relative rounded-md overflow-hidden"
           >
             <img
-              className="w-full h-full object-cover rounded"
+              className="w-full h-full  object-cover rounded"
               src={curr.url}
             />
 

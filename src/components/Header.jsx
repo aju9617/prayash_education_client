@@ -99,7 +99,7 @@ function Header() {
         <NavLink
           activeClassName="text-secondary"
           to="/gallery"
-          className="p-4 hover:text-secondary transition-all"
+          className="p-2 hover:text-secondary transition-all block"
         >
           Gallery
         </NavLink>

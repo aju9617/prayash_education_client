@@ -87,15 +87,25 @@ function Footer() {
         <div className="text-sm">
           <p className="flex space-x-4 mb-1 items-center">
             <IoCall size={18} />
-            <span>9584606245</span>
+            <a href="tel:958-460-6245">
+              <span>+91-958-460-6245 </span>
+            </a>
           </p>
           <p className="flex space-x-4 mb-1 items-center">
             <IoMdMail size={18} />
-            <span>prayasheducation86@gmail.com</span>
+            <a href="mailto:prayasheducation86@gmail.com">
+              <span> prayasheducation86@gmail.com</span>
+            </a>
           </p>
           <p className="flex space-x-4 mb-1 items-center">
             <IoLocationSharp size={18} />
-            <span>Joura, Morena, Madhya Pradesh</span>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://g.co/kgs/V32mn7"
+            >
+              <span>Joura, Morena, Madhya Pradesh</span>
+            </a>
           </p>
         </div>
       </div>

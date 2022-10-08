@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../ui";
 import { BsArrowRightShort } from "react-icons/bs";
 import { notificationService } from "../services";
-import landing from "../media/landing.jpg";
+import bg from "../media/bg.jpg";
 import students from "../media/students.jpg";
 import key1 from "../media/keyFeature-1.svg";
 import key2 from "../media/keyFeature-2.svg";
@@ -156,32 +156,36 @@ function Feature() {
 function Home() {
   return (
     <>
-      {/* <div className="p-4 md:p-8 pb-4 w-full  relative">
+      <div className="p-4 md:p-8 pb-4 w-full h-[80vh] relative">
         <div className="flex justify-between items-center w-11/12 mx-auto text-white">
           <img
-            src={landing}
+            src={bg}
             alt="landing"
-            className="absolute top-0 left-0 right-0 bottom-0 h-full w-full object-cover   -z-10 "
+            className=" absolute top-0 left-0 right-0 bottom-0 h-full w-full object-cover   -z-10 "
           />
-          <div className="my-auto h-[80vh] grid place-content-center">
-            <h2 className="text-4xl font-medium">
-              It’s never late to learn new skills
-            </h2>
-            <p className="md:w-96 mt-2 mb-4">
-              The great thing about learning is that you never have to stop!
-              There’s no limit as to the amount of knowledge you can obtain. So,
-              rip a page from Gandhi’s book and keep on learning while you’re
-              living.
-            </p>
-            <Link to="/admission-form">
-              <Button className="flex items-center space-x-2 mt-4">
-                <span className="block">Get Admission </span>
-                <BsArrowRightShort size={20} className="block" />
-              </Button>
-            </Link>
+          <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-tr from-gray-900 to-transparent bg-opacity-40">
+            <div className=" h-full flex items-center pl-8">
+              <div>
+                <h2 className="text-4xl font-medium">
+                  It’s never late to learn new skills
+                </h2>
+                <p className="md:w-96 mt-2 mb-4 ">
+                  The great thing about learning is that you never have to stop!
+                  There’s no limit as to the amount of knowledge you can obtain.
+                  So, rip a page from Gandhi’s book and keep on learning while
+                  you’re living.
+                </p>
+                <Link to="/admission-form">
+                  <Button className="flex items-center space-x-2 mt-4">
+                    <span className="block">Get Admission </span>
+                    <BsArrowRightShort size={20} className="block" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
-      </div> */}
+      </div>
       <Feature />
       <AboutUs />
       <LatestInformation />

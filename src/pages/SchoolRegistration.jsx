@@ -30,7 +30,8 @@ function TableData({ school }) {
       <tr className=" border-1  border-gray-300 ">
         <td className=" p-2 px-4">{school.schoolName}</td>
         <td className=" p-2 px-4">{school.email}</td>
-        <td className=" p-2 px-4">{school.phone}</td>
+        <td className=" p-2 px-4">{school.addressLine1}</td>
+        <td className=" p-2 px-4">{school.addressLine2}</td>
       </tr>
     </>
   );
@@ -102,7 +103,8 @@ function SchoolList() {
               <tr className="text-sm  !font-medium bg-primary text-white">
                 <td className="p-2 px-4">School Name</td>
                 <td className="p-2 px-4">Email</td>
-                <td className="p-2 px-4">Phone</td>
+                <td className="p-2 px-4">Address Line 1</td>
+                <td className="p-2 px-4">Address Line 2</td>
               </tr>
             </thead>
             <tbody className=" text-sm ">
